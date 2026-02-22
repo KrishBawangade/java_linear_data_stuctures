@@ -17,6 +17,7 @@ public class DoublyLinkedListCustom {
         if(head == null){
             head = node;
             tail = head;
+            size++;
             return;
         }
         node.next = head;
