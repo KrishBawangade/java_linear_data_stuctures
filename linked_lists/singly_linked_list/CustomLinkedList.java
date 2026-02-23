@@ -37,7 +37,7 @@ public class CustomLinkedList{
     }
 
     public void insertAt(int index, int val){
-        if(head == null){
+        if(index == 0){
             insertAtFirst(val);
             return;
         }
