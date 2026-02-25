@@ -8,6 +8,14 @@ public class ListNode {
     public ListNode(int val) { this.val = val; }
     public ListNode(int val, ListNode next) { this.val = val; this.next = next; }
 
+    public void setNext(ListNode next){
+        this.next = next;
+    }
+
+    public int getVal(){
+        return this.val;
+    }
+
     public ListNode insert(ListNode head, int val){
         ListNode temp = head;
         ListNode node = new ListNode(val);
@@ -89,7 +97,37 @@ public class ListNode {
         return length;
     }
 
-    public void setNext(ListNode next){
-        this.next = next;
+    public ListNode detectCycle(ListNode head){
+        ListNode fast = head, slow = head;
+
+        while(fast!=null){
+            int i=2;
+
+            // moving fast pointer ahead by 2 pos
+            while(fast!=null && i>0){
+                fast = fast.next;
+                i--;
+            }
+
+            // moving slow pointer ahead by 1 pos
+            slow = slow.next;
+
+            if(fast!= null && fast == slow){
+                break;
+            }
+        }
+
+        if(fast==null){
+            return null;
+        }
+
+        ListNode ptr1 = head;
+
+        while(ptr1 != slow){
+            ptr1 = ptr1.next;
+            slow = slow.next;
+        }
+
+        return ptr1;
     }
 }

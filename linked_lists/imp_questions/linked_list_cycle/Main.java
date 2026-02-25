@@ -12,6 +12,9 @@ public class Main {
         tail.setNext(cycleNode);
 
         // System.out.println(head.hasCycle(head));
-        System.out.println(head.cycleLength(head));
+        // System.out.println(head.cycleLength(head));
+
+        ListNode detectedNode = head.detectCycle(head);
+        System.out.println(detectedNode.getVal());
     }
 }
