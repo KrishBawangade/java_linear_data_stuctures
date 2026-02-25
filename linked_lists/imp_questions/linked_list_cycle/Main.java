@@ -11,6 +11,7 @@ public class Main {
 
         tail.setNext(cycleNode);
 
-        System.out.println(head.hasCycle(head));
+        // System.out.println(head.hasCycle(head));
+        System.out.println(head.cycleLength(head));
     }
 }

@@ -58,6 +58,37 @@ public class ListNode {
         return false;
     }
 
+    public int cycleLength(ListNode head){
+        ListNode fast = head, slow = head;
+        int length = 0;
+
+        while(fast!=null){
+            int i=2;
+
+            // moving fast pointer ahead by 2 pos
+            while(fast!=null && i>0){
+                fast = fast.next;
+                i--;
+            }
+
+            // moving slow pointer ahead by 1 pos
+            slow = slow.next;
+
+            if(fast!= null && fast == slow){
+                break;
+            }
+        }
+
+        if(fast!=null && fast == slow){
+            do{
+                slow = slow.next;
+                length++;
+            }while(fast != slow);
+        }
+
+        return length;
+    }
+
     public void setNext(ListNode next){
         this.next = next;
     }
