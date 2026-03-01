@@ -11,8 +11,12 @@ public class IterativeReverse {
 
         head.display(head);
 
-        ListNode reversedHead = head.reverseList(head);
+        // ListNode reversedHead = head.reverseList(head);
         
-        reversedHead.display(reversedHead);
+        // reversedHead.display(reversedHead);
+
+        head.reverseBetween(head, 2, 4);
+
+        head.display(head);
     }
 }
