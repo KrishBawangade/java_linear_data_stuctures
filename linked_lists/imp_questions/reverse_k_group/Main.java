@@ -14,8 +14,10 @@ public class Main {
 
         head.display(head);
 
-        ListNode newHead = head.reverseKGroup(head, 3);
+        // ListNode newHead1 = head.reverseKGroup(head, 3);
+        // newHead1.display(newHead1);
 
-        newHead.display(newHead);
+        ListNode newHead2 = head.reverseAlternateKGroup(head, 2);
+        newHead2.display(newHead2);
     }
 }

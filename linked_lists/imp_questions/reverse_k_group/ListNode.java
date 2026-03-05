@@ -108,4 +108,83 @@ public class ListNode {
 
         return head;
     }
+
+    public ListNode reverseAlternateKGroup(ListNode head, int k) {
+
+        if(k==1){
+            return head;
+        }
+
+        int counter = 2;
+
+        ListNode prev = head;
+        ListNode current = head.next;
+
+        ListNode last = null;
+        ListNode newEnd = prev;
+
+        ListNode next = current.next;
+
+        boolean skipKElements = false;
+
+        while(current!=null){
+
+            if(skipKElements){
+                for(int i=0; current!=null && i<k; i++){
+                    last = prev;
+                    prev = current;
+                    current = next;
+                    if(next!=null){
+                        next = next.next;
+                    }
+                }
+                newEnd = prev;
+
+                if(!hasKElements(current, k)){
+                    // check if there are further k elements to form a group or not, if not break
+                    break;
+                }
+                skipKElements = false;
+            }
+
+            if(current == null){
+                break;
+            }
+
+            // reverse the elements inside the group
+            current.next = prev;
+            prev = current;
+            current = next;
+            if(next!=null){
+                next = next.next;
+            }
+            counter++;
+            if(counter>k){
+                skipKElements = true;
+                counter = 2;
+                if(last!=null){
+                    last.next = prev;
+                }else{
+                    head = prev;
+                }
+                newEnd.next = current;
+                last = newEnd;
+
+                if(!hasKElements(current, k)){
+                    // check if there are further k elements to form a group or not, if not break
+                    break;
+                }
+
+                // reset the variables accordingly to the new group
+                prev = current;
+                current = next;
+                if(next!=null){
+                    next = next.next;
+                }
+                newEnd = prev;
+            }
+        }
+
+        return head;
+    }
 }
