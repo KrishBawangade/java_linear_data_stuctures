@@ -16,17 +16,16 @@ public class CircularQueue {
     }
 
     public boolean isOverflowed(){
-        return end == data.length-1 && front == ((end+1) % data.length);
+        return front == (end+1)%data.length;
     } 
 
     public boolean isEmpty(){
         return end == -1;
     }
 
-    public boolean insert(int ele){
+    public boolean insert(int ele) throws QueueException{
         if(isOverflowed()){
-            System.out.println("\nThe Queue is Overflowed");
-            return false;
+            throw new QueueException("The Queue is Overflowed!");
         }
 
         if(end == -1){
